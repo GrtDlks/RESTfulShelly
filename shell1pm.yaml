@@ -1,0 +1,16 @@
+#Shelly 1PM  
+  - platform: rest
+    name: "Shelly1PM Küche"
+    scan_interval: 5
+    resource: http://192.168.0.100/relay/0
+    body_on: 'turn=on'
+    body_off: 'turn=off'
+    is_on_template: '{{ value_json.ison == true}}'
+    headers:
+      content-type: application/x-www-form-urlencoded
+sensor:
+  - platform: rest
+    resource: http://192.168.0.100/status
+    name: Shelly1PM Küche
+    value_template: '{{ value_json.meters[0]["power"]}}'
+    scan_interval: 5
