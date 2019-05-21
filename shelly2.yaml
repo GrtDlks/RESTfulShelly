@@ -20,7 +20,7 @@ switch:
       content-type: application/x-www-form-urlencoded
 sensor:
   - platform: rest
-    resource: http://192.168.86.58/status
+    resource: http://192.168.0.100/status
     name: Shelly2 Wohn/Esszimmer
     value_template: '{{ value_json.meters[0]["power"]}}'
     scan_interval: 5
