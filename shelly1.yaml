@@ -1,0 +1,23 @@
+switch:
+#Wohnzimmer
+  - platform: rest
+    name: "Shelly1 Wohnzimmer"
+    scan_interval: 5
+    resource: http://192.168.0.100/relay/0
+    body_on: 'turn=on'
+    body_off: 'turn=off'
+    is_on_template: '{{ value_json.ison == true}}'
+    headers:
+      content-type: application/x-www-form-urlencoded
+      
+#optional:
+#Esszimmer
+  - platform: rest
+    name: "Shelly1 Esszimmer"
+    scan_interval: 5
+    resource: http://192.168.0.101/relay/0
+    body_on: 'turn=on'
+    body_off: 'turn=off'
+    is_on_template: '{{ value_json.ison == true}}'
+    headers:
+      content-type: application/x-www-form-urlencoded
