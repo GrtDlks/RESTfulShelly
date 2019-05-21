@@ -1,0 +1,16 @@
+#Jalousie/Rollade
+cover:
+  - platform: command_line
+    covers:
+      friendly_name: “Wohnzimmer”
+      roller_shutter:
+        command_open: '/usr/bin/curl -Ss "http://192.168.0.100/roller/0?go=open" >>/tmp/roller 2>&1'
+        command_close: '/usr/bin/curl -Ss "http://192.168.0.100/roller/0?go=close" >>/tmp/roller 2>&1'
+        command_stop: '/usr/bin/curl -Ss "http://192.168.0.100/roller/0?go=stop" >>/tmp/roller 2>&1'
+        command_state: '/usr/bin/curl -Ss "http://192.168.0.100/roller/0" 2>>/tmp/roller | grep state'
+        value_template: >
+          {% if value == 'open' %}
+          100
+          {% elif value == 'close' %}
+          0
+          {% endif %}
